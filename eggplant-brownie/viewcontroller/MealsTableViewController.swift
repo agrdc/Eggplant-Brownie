@@ -12,15 +12,19 @@ class MealsTableViewController : UITableViewController {
     var meals : Array<Meal> = [Meal(name: "Sandubera", happiness: 4),
                                Meal(name: "Japa", happiness: 5)]
     
-    func addMeal(meal : Meal) {
+    // _ faz com que o nome do parametro meal fique oculto quando esse método for usado
+    // addMeal(meal) ao invés de addMeal(meal:Meal)
+    func addMeal(_ meal : Meal) {
         meals.append(meal)
         tableView.reloadData()
     }
     
     //executado antes de ir para próximo viewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as? ViewController
-        viewController?.mealsTableViewController = self
+        if (segue.identifier == "addMeal") {
+            let viewController = segue.destination as? ViewController
+            viewController?.mealsTableViewController = self
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

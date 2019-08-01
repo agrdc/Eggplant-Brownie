@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             if let happiness = Int(happinessText!) {
                 let meal = Meal(name : nameText!, happiness : happiness)
                 print("Eaten \(meal.name) with happiness \(meal.happiness)")
-                mealsTableViewController?.addMeal(meal: meal)
+                mealsTableViewController?.addMeal(meal)
             }
         }
         navigationController?.popViewController(animated: true)
